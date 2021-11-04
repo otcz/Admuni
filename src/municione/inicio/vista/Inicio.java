@@ -6,16 +6,23 @@
 package municione.inicio.vista;
 
 
+import municione.inicio.control.EventoBotonEntrarValidarUsuario;
+import municione.inicio.control.EventoClicSalir;
+import municione.inicio.control.EventoTeclaSiguienteComponente;
+import municione.inicio.control.EventoTeclaValidarUsuario;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Inicio extends JFrame {
-    private JLabel jLabel1,lbIcono,lbTitulo;
+    private JLabel lbSalir, lbIcono, lbTitulo;
 
-    private JPanel pnDerecho,pnIzquierda;
-    private JTextField texClave,textUsuario;
-    private JButton textSalir;
+    private JPanel pnDerecho, pnIzquierda;
+    private JTextField texClave, textUsuario;
+    private JButton btntSalir;
+    public static Inicio inicio;
 
     public Inicio() {
         GridBagConstraints gridBagConstraints;
@@ -26,8 +33,8 @@ public class Inicio extends JFrame {
         lbTitulo = new JLabel();
         texClave = new JTextField();
         textUsuario = new JTextField();
-        textSalir = new JButton();
-        jLabel1 = new JLabel();
+        btntSalir = new JButton();
+        lbSalir = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new GridLayout(1, 1));
@@ -85,10 +92,10 @@ public class Inicio extends JFrame {
         gridBagConstraints.insets = new Insets(77, 50, 0, 0);
         pnDerecho.add(textUsuario, gridBagConstraints);
 
-        textSalir.setBackground(new Color(1, 135, 134));
-        textSalir.setFont(new Font("Roboto", 1, 14)); // NOI18N
-        textSalir.setForeground(new Color(255, 255, 255));
-        textSalir.setText("ENTRAR");
+        btntSalir.setBackground(new Color(1, 135, 134));
+        btntSalir.setFont(new Font("Roboto", 1, 14)); // NOI18N
+        btntSalir.setForeground(new Color(255, 255, 255));
+        btntSalir.setText("ENTRAR");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -97,20 +104,24 @@ public class Inicio extends JFrame {
         gridBagConstraints.ipady = 19;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(50, 52, 0, 49);
-        pnDerecho.add(textSalir, gridBagConstraints);
+        pnDerecho.add(btntSalir, gridBagConstraints);
 
-        jLabel1.setFont(new Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(new Color(255, 255, 255));
-        jLabel1.setText("SALIR");
+        lbSalir.setFont(new Font("Tahoma", 1, 12)); // NOI18N
+        lbSalir.setForeground(new Color(255, 255, 255));
+        lbSalir.setText("SALIR");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(39, 160, 93, 0);
-        pnDerecho.add(jLabel1, gridBagConstraints);
-
+        pnDerecho.add(lbSalir, gridBagConstraints);
         getContentPane().add(pnDerecho);
+        btntSalir.addActionListener(new EventoBotonEntrarValidarUsuario(textUsuario, texClave));
+        btntSalir.addKeyListener(new EventoTeclaValidarUsuario(KeyEvent.VK_ENTER, getTextUsuario(), getTexClave()));
+        textUsuario.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, texClave));
+        texClave.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btntSalir));
+        lbSalir.addMouseListener(new EventoClicSalir());
 
         pack();
     }
@@ -135,10 +146,34 @@ public class Inicio extends JFrame {
         }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                Inicio inicio = getInstancia();
+                inicio.setVisible(true);
             }
         });
     }
 
+    public static Inicio getInstancia() {
+        if (inicio == null) {
+            inicio = new Inicio();
+        } else {
+            return inicio;
+        }
+        return inicio;
+    }
 
+    public JTextField getTexClave() {
+        return texClave;
+    }
+
+    public void setTexClave(JTextField texClave) {
+        this.texClave = texClave;
+    }
+
+    public JTextField getTextUsuario() {
+        return textUsuario;
+    }
+
+    public void setTextUsuario(JTextField textUsuario) {
+        this.textUsuario = textUsuario;
+    }
 }
