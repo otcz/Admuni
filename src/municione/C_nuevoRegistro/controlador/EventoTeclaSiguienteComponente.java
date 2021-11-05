@@ -1,6 +1,4 @@
-package municione.inicio.control;
-
-import municione.inicio.modelo.ValidarUsuario;
+package municione.C_nuevoRegistro.controlador;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -23,16 +21,17 @@ public class EventoTeclaSiguienteComponente implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (getObjetoSiguiente() instanceof JTextField) {
-            JTextField textField = (JTextField) getObjetoSiguiente();
-            if (e.getKeyCode() == getKeyEventTipo()) {
-                textField.requestFocus();
+        if (e.getKeyCode() == getKeyEventTipo()) {
+            if (getObjetoSiguiente() instanceof JTextField) {
+                JTextField textField = (JTextField) getObjetoSiguiente();
+                if (e.getKeyCode() == getKeyEventTipo()) {
+                    textField.requestFocus();
+                }
+            } else if (getObjetoSiguiente() instanceof JButton) {
+                JButton button = (JButton) getObjetoSiguiente();
+                button.doClick();
             }
-        } else if (getObjetoSiguiente() instanceof JButton) {
-            JButton button = (JButton) getObjetoSiguiente();
-            button.doClick();
         }
-
     }
 
     @Override

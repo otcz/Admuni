@@ -1,6 +1,6 @@
-package municione.inicio.control;
+package municione.A_inicio.control;
 
-import municione.inicio.modelo.ValidarUsuario;
+import municione.A_inicio.modelo.ValidarUsuario;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

@@ -1,7 +1,7 @@
-package municione.inicio.modelo;
+package municione.A_inicio.modelo;
 
-import municione.MenuPrincipal.vista.Principal;
-import municione.inicio.vista.Inicio;
+import municione.B_menuPrincipal.vista.Principal;
+import municione.A_inicio.vista.Inicio;
 
 import javax.swing.*;
 

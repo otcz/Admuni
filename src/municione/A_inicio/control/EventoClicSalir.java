@@ -1,4 +1,4 @@
-package municione.inicio.control;
+package municione.A_inicio.control;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public class EventoClicSalir implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         JLabel label = (JLabel) e.getSource();
         label.setFont(new Font("Tahoma", 1, 14)); // NOI18N
-        label.setText("Preciona para salir");
+        label.setText("PRECIONA PARA SALIR");
 
 
     }

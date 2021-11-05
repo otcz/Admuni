@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package municione.inicio.vista;
+package municione.A_inicio.vista;
 
 
-import municione.inicio.control.EventoBotonEntrarValidarUsuario;
-import municione.inicio.control.EventoClicSalir;
-import municione.inicio.control.EventoTeclaSiguienteComponente;
-import municione.inicio.control.EventoTeclaValidarUsuario;
+import municione.A_inicio.control.EventoBotonEntrarValidarUsuario;
+import municione.A_inicio.control.EventoClicSalir;
+import municione.A_inicio.control.EventoTeclaSiguienteComponente;
+import municione.A_inicio.control.EventoTeclaValidarUsuario;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

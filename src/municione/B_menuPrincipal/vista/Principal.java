@@ -1,4 +1,6 @@
-package municione.MenuPrincipal.vista;
+package municione.B_menuPrincipal.vista;
+
+import municione.B_menuPrincipal.control.EventoMenuNuevoRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +9,8 @@ public class Principal extends JFrame {
     private JLabel lbFondo;
     private JMenuBar jMenuBar1;
     private JPanel jPanel2;
-    private JMenu jmArchivo,jmArchivo1,jmArchivo2;
-    private JMenuItem jmCrearTipoMunicion,jmCrearTipoMunicion1,jmVerRegistro,jmiCrearMunicion,jmiCrearMunicion1,jmiCrearMunicion2;
+    private JMenu jmArchivo, jmArchivo1, jmArchivo2;
+    private JMenuItem jmCrearTipoMunicion, jmCrearTipoMunicion1, jmVerRegistro, jmiNuevoRegistro, jmiCrearMunicion1, jmiCrearMunicion2;
 
     public static Principal principal = null;
 
@@ -18,7 +20,7 @@ public class Principal extends JFrame {
         lbFondo = new JLabel();
         jMenuBar1 = new JMenuBar();
         jmArchivo = new JMenu();
-        jmiCrearMunicion = new JMenuItem();
+        jmiNuevoRegistro = new JMenuItem();
         jmCrearTipoMunicion = new JMenuItem();
         jmVerRegistro = new JMenuItem();
         jmArchivo1 = new JMenu();
@@ -47,17 +49,17 @@ public class Principal extends JFrame {
         jmArchivo.setAlignmentX(2.0F);
         jmArchivo.setFont(new Font("Roboto", 1, 12)); // NOI18N
 
-        jmiCrearMunicion.setFont(new Font("Roboto", 0, 12)); // NOI18N
-        jmiCrearMunicion.setIcon(new ImageIcon(getClass().getResource("/municione/imagen/Nuevo.png"))); // NOI18N
-        jmiCrearMunicion.setText("NUEVO REGISTRO");
-        jmiCrearMunicion.setActionCommand("");
-        jmiCrearMunicion.setAlignmentX(2.0F);
-        jmiCrearMunicion.setAlignmentY(2.0F);
-        jmiCrearMunicion.setMaximumSize(new Dimension(200, 40));
-        jmiCrearMunicion.setMinimumSize(new Dimension(200, 40));
-        jmiCrearMunicion.setPreferredSize(new Dimension(200, 40));
+        jmiNuevoRegistro.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        jmiNuevoRegistro.setIcon(new ImageIcon(getClass().getResource("/municione/imagen/Nuevo.png"))); // NOI18N
+        jmiNuevoRegistro.setText("NUEVO REGISTRO");
+        jmiNuevoRegistro.setActionCommand("");
+        jmiNuevoRegistro.setAlignmentX(2.0F);
+        jmiNuevoRegistro.setAlignmentY(2.0F);
+        jmiNuevoRegistro.setMaximumSize(new Dimension(200, 40));
+        jmiNuevoRegistro.setMinimumSize(new Dimension(200, 40));
+        jmiNuevoRegistro.setPreferredSize(new Dimension(200, 40));
 
-        jmArchivo.add(jmiCrearMunicion);
+        jmArchivo.add(jmiNuevoRegistro);
 
         jmCrearTipoMunicion.setFont(new Font("Roboto", 0, 12)); // NOI18N
         jmCrearTipoMunicion.setIcon(new ImageIcon(getClass().getResource("/municione/imagen/cajaMuni32.png"))); // NOI18N
@@ -137,7 +139,10 @@ public class Principal extends JFrame {
         jmArchivo2.add(jmiCrearMunicion2);
         jMenuBar1.add(jmArchivo2);
         setJMenuBar(jMenuBar1);
+
+        jmiNuevoRegistro.addActionListener(new EventoMenuNuevoRegistro());
         pack();
+
 
     }
 
