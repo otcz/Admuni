@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package municione.F_estadisticaLoteMuni.vista;
+package municione.G_estadisticaTipoMuni.vista;
 
 
 import municione.E_verRegistro.modelo.TituloTabla;
-import municione.E_verRegistro.vista.VerRegistro;
 import municione.F_estadisticaLoteMuni.modelo.Jtable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -19,16 +18,16 @@ import org.jfree.util.Rotation;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoteMuni extends JFrame {
+public class TipoMuni extends JFrame {
 
     private JScrollPane jScrollPane1;
     private JTable jtRegistros;
     private JPanel pnInferior;
     private JPanel pnPrincipal;
     private JPanel pnSuperior;
-    public static LoteMuni loteMuni;
+    public static TipoMuni loteMuni;
 
-    public LoteMuni() {
+    public TipoMuni() {
         initComponents();
 
         // Fuente de Datos
@@ -61,7 +60,7 @@ public class LoteMuni extends JFrame {
         pnInferior = new JPanel();
         jScrollPane1 = new JScrollPane();
         jtRegistros = new Jtable(TituloTabla.Nuevo_registro, new Object[0][0]);
-
+        
         setBackground(new Color(1, 135, 134));
         setForeground(new Color(1, 135, 134));
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.LINE_AXIS));
@@ -89,9 +88,9 @@ public class LoteMuni extends JFrame {
         pack();
     }
 
-    public static LoteMuni getInstancia() {
+    public static TipoMuni getInstancia() {
         if (loteMuni == null) {
-            loteMuni = new LoteMuni();
+            loteMuni = new TipoMuni();
         } else {
             return loteMuni;
         }
