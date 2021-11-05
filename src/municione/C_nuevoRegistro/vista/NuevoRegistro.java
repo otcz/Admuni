@@ -1,8 +1,8 @@
 package municione.C_nuevoRegistro.vista;
 
 
-import municione.A_inicio.vista.Inicio;
 import municione.C_nuevoRegistro.controlador.AbrirVentanaPrincipal;
+import municione.C_nuevoRegistro.controlador.EventoBotonNuevoTipoMuni;
 import municione.C_nuevoRegistro.controlador.EventoBotonRegistrar;
 import municione.C_nuevoRegistro.controlador.EventoTeclaSiguienteComponente;
 import municione.C_nuevoRegistro.modelo.Jtable;
@@ -240,6 +240,7 @@ public class NuevoRegistro extends JFrame {
         textFecha.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, textUbicacion));
         textUbicacion.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnRegistrar));
         btnRegistrar.addActionListener(new EventoBotonRegistrar());
+        btnNuevoTipoMuni.addActionListener(new EventoBotonNuevoTipoMuni());
         addWindowListener(new AbrirVentanaPrincipal());
         pack();
     }
