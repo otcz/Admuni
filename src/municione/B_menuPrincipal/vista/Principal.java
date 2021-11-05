@@ -1,6 +1,8 @@
 package municione.B_menuPrincipal.vista;
 
+import municione.B_menuPrincipal.control.EventoCrearTipoMuni;
 import municione.B_menuPrincipal.control.EventoMenuNuevoRegistro;
+import municione.B_menuPrincipal.control.EventoVerRegistros;
 
 import javax.swing.*;
 import java.awt.*;
@@ -141,6 +143,8 @@ public class Principal extends JFrame {
         setJMenuBar(jMenuBar1);
 
         jmiNuevoRegistro.addActionListener(new EventoMenuNuevoRegistro());
+        jmCrearTipoMunicion.addActionListener(new EventoCrearTipoMuni());
+        jmVerRegistro.addActionListener(new EventoVerRegistros());
         pack();
 
 

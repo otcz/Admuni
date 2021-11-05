@@ -2,6 +2,8 @@ package municione.C_nuevoRegistro.controlador;
 
 import municione.C_nuevoRegistro.modelo.Municion;
 import municione.C_nuevoRegistro.vista.NuevoRegistro;
+import municione.E_verRegistro.control.PonerRegistrosEnTabla;
+import municione.E_verRegistro.vista.VerRegistro;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +18,9 @@ public class MostrarDatosMuniEnTabla {
         NuevoRegistro nuevoRegistro = NuevoRegistro.getInstancia();
         DefaultTableModel model = (DefaultTableModel) nuevoRegistro.getJtResgistro().getModel();
         model.addRow(getMunicion().municio());
+        nuevoRegistro.limpiarCampos();
+        PonerRegistrosEnTabla ponerRegistrosEnTabla= new PonerRegistrosEnTabla();
+        ponerRegistrosEnTabla.municiones();
     }
 
     public Municion getMunicion() {

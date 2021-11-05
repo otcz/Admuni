@@ -254,6 +254,13 @@ public class NuevoRegistro extends JFrame {
         return nuevoRegistro;
     }
 
+    public void limpiarCampos() {
+        textCantidad.setText("");
+        textLote.setText("");
+        textFecha.setText("");
+        textUbicacion.setText("");
+    }
+
     public JComboBox<String> getCbTipoMuni() {
         return cbTipoMuni;
     }

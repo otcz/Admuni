@@ -36,7 +36,6 @@ public class CrearNuevoTipoMunicion extends JFrame {
         btnSalir = new JButton();
         btnGuardar = new JButton();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBackground(new Color(1, 135, 134));
 
         pnprincipal.setBackground(new Color(1, 135, 134));
