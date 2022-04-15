@@ -1,6 +1,6 @@
-package cafe.D_nuevoProducto.control;
+package cafe.D_nuevoEditarProducto.control;
 
-import cafe.D_nuevoProducto.modelo.GuardarNuevoProducto;
+import cafe.D_nuevoEditarProducto.modelo.tabla.GuardarNuevoProducto;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

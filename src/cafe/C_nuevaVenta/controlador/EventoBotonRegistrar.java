@@ -9,10 +9,9 @@ import java.awt.event.ActionListener;
 public class EventoBotonRegistrar implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        Venta venta = new RecoletarDatosMuni().recolectar();
+        Venta venta = new RecoletarDatosVenta().recolectar();
         if (venta != null) {
             MostrarDatosVentaEnTabla mostrarDatosVentaEnTabla = new MostrarDatosVentaEnTabla(venta);
-
             AlmacenarNuevoProducto.addProducto(venta);
             mostrarDatosVentaEnTabla.addVentaATable();
         } else {

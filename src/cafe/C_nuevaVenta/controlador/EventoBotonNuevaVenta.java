@@ -1,6 +1,6 @@
 package cafe.C_nuevaVenta.controlador;
 
-import cafe.D_nuevoProducto.vista.FrmCrearNuevoProducto;
+import cafe.D_nuevoEditarProducto.vista.FrmCrearNuevoProducto;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

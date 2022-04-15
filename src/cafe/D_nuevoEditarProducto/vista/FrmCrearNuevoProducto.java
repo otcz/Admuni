@@ -1,12 +1,14 @@
-package cafe.D_nuevoProducto.vista;
+package cafe.D_nuevoEditarProducto.vista;
 
-import cafe.D_nuevoProducto.control.EventoBotonGuardarProducto;
-import cafe.D_nuevoProducto.control.EventoSalir;
-import cafe.D_nuevoProducto.control.EventoTeclaSiguienteComponente;
+import cafe.D_nuevoEditarProducto.control.EventoBotonGuardarProducto;
+import cafe.D_nuevoEditarProducto.control.EventoSalir;
+import cafe.D_nuevoEditarProducto.control.EventoTeclaSiguienteComponente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static cafe.A_inicio.vista.FrmInicio.colorPrimary;
 
@@ -18,7 +20,7 @@ public class FrmCrearNuevoProducto extends JFrame {
     private JPanel pnprincipal;
     private JTextField txtCategoria,txtFecha,txtID,txtNombreProducto,txtPeso,txtPrecio,txtReferencia,txtStock;
 
-    public static FrmCrearNuevoProducto crearNuevoTipoMunicion;
+    public static FrmCrearNuevoProducto crearNuevoProducto;
 
     public FrmCrearNuevoProducto() {
         ImageIcon icono =  new ImageIcon(getClass().getResource("/cafe/imagen/ICONO.png"));
@@ -47,7 +49,7 @@ public class FrmCrearNuevoProducto extends JFrame {
         lbTitulo.setBackground(new Color(255, 255, 255));
         lbTitulo.setFont(new Font("Roboto", 1, 24)); // NOI18N
         lbTitulo.setForeground(new Color(255, 255, 255));
-        lbTitulo.setText("NUEVO/EDITAR  PRODUCTOx|");
+        lbTitulo.setText("NUEVO PRODUCTO");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -191,6 +193,9 @@ public class FrmCrearNuevoProducto extends JFrame {
         pnprincipal.add(txtStock, gridBagConstraints);
 
         txtFecha.setBackground(colorPrimary);
+        DateTimeFormatter dFecha = DateTimeFormatter.ofPattern("HH:mm - yyyy/MM/dd ");
+        txtFecha.setText(dFecha.format(LocalDateTime.now()));
+        txtFecha.setEditable(false);
         txtFecha.setFont(new Font("Roboto", 1, 14)); // NOI18N
         txtFecha.setForeground(new Color(255, 255, 255));
         txtFecha.setBorder(BorderFactory.createTitledBorder(null, "FECHA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255))); // NOI18N
@@ -223,20 +228,20 @@ public class FrmCrearNuevoProducto extends JFrame {
     }
 
     public static FrmCrearNuevoProducto getInstancia() {
-        if (crearNuevoTipoMunicion == null) {
-            crearNuevoTipoMunicion = new FrmCrearNuevoProducto();
+        if (crearNuevoProducto == null) {
+            crearNuevoProducto = new FrmCrearNuevoProducto();
         } else {
-            return crearNuevoTipoMunicion;
+            return crearNuevoProducto;
         }
-        return crearNuevoTipoMunicion;
+        return crearNuevoProducto;
     }
 
-    public static FrmCrearNuevoProducto getCrearNuevoTipoMunicion() {
-        return crearNuevoTipoMunicion;
+    public static FrmCrearNuevoProducto getCrearNuevoProducto() {
+        return crearNuevoProducto;
     }
 
-    public static void setCrearNuevoTipoMunicion(FrmCrearNuevoProducto crearNuevoTipoMunicion) {
-        FrmCrearNuevoProducto.crearNuevoTipoMunicion = crearNuevoTipoMunicion;
+    public static void setCrearNuevoProducto(FrmCrearNuevoProducto crearNuevoProducto) {
+        FrmCrearNuevoProducto.crearNuevoProducto = crearNuevoProducto;
     }
 
 

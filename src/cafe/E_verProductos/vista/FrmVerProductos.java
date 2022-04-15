@@ -74,7 +74,7 @@ public class FrmVerProductos extends JFrame {
         btnBuscar.setBackground(colorPrimary);
         btnBuscar.setFont(new Font("Roboto", 1, 14)); // NOI18N
         btnBuscar.setForeground(new Color(255, 255, 255));
-        btnBuscar.setIcon(new ImageIcon(getClass().getResource("/administrarMunicion/imagen/VerRegistro.png"))); // NOI18N
+        btnBuscar.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/VerRegistro.png"))); // NOI18N
         btnBuscar.setText("BUSCAR");
 
         gridBagConstraints = new GridBagConstraints();

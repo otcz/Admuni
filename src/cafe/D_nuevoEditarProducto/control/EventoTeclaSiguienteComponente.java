@@ -1,4 +1,4 @@
-package cafe.D_nuevoProducto.control;
+package cafe.D_nuevoEditarProducto.control;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

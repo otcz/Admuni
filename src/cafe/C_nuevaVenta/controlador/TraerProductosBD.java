@@ -1,21 +1,14 @@
-package cafe.A_inicio.modelo;
-
-import cafe.BD.ConnectionBD;
+package cafe.C_nuevaVenta.controlador;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DatosUsuarioBD {
+public class TraerProductosBD {
 
-    public static String usurio = null, clave = null;
+    public TraerProductosBD() {
 
-    ConnectionBD connectionBD = new ConnectionBD();
-
-    public DatosUsuarioBD() {
-        ejecutarConsulta(connectionBD.connection());
     }
-
 
     public void ejecutarConsulta(Connection con) {
         try {
@@ -24,8 +17,8 @@ public class DatosUsuarioBD {
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                usurio = rs.getString("usuario");
-                clave = rs.getString("clave");
+               //usurio = rs.getString("usuario");
+               //clave = rs.getString("clave");
             }
 
             rs.close();
@@ -34,5 +27,4 @@ public class DatosUsuarioBD {
             e.printStackTrace();
         }
     }
-
 }

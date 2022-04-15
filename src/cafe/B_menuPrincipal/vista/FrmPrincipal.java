@@ -12,7 +12,7 @@ public class FrmPrincipal extends JFrame {
     private JMenuBar jMenuBar1;
     private JPanel jPanel2;
     private JMenu jmArchivo, jmArchivo1, jmArchivo2;
-    private JMenuItem jmIngresarProducto, jmVerStock, jmiNuevaVenta, jmiCrearMunicion1, jmiCrearMunicion2;
+    private JMenuItem jmIngresarProducto,jmEditarProducto, jmVerStock, jmiNuevaVenta, jmiCrearMunicion1, jmiCrearMunicion2;
 
     public static FrmPrincipal principal = null;
 
@@ -26,6 +26,7 @@ public class FrmPrincipal extends JFrame {
         jmArchivo = new JMenu();
         jmiNuevaVenta = new JMenuItem();
         jmIngresarProducto = new JMenuItem();
+        jmEditarProducto = new JMenuItem();
         jmArchivo1 = new JMenu();
         jmiCrearMunicion1 = new JMenuItem();
         jmVerStock = new JMenuItem();
@@ -49,17 +50,6 @@ public class FrmPrincipal extends JFrame {
         jmArchivo.setAlignmentX(2.0F);
         jmArchivo.setFont(new Font("Roboto", 1, 12)); // NOI18N
 
-        jmiNuevaVenta.setFont(new Font("Roboto", 0, 12)); // NOI18N
-        jmiNuevaVenta.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/nuevaventa.png"))); // NOI18N
-        jmiNuevaVenta.setText("NUEVA VENTA");
-        jmiNuevaVenta.setActionCommand("");
-        jmiNuevaVenta.setAlignmentX(2.0F);
-        jmiNuevaVenta.setAlignmentY(2.0F);
-        jmiNuevaVenta.setMaximumSize(new Dimension(200, 40));
-        jmiNuevaVenta.setMinimumSize(new Dimension(200, 40));
-        jmiNuevaVenta.setPreferredSize(new Dimension(200, 40));
-
-        jmArchivo.add(jmiNuevaVenta);
 
         jmIngresarProducto.setFont(new Font("Roboto", 0, 12)); // NOI18N
         jmIngresarProducto.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/Nuevo.png"))); // NOI18N
@@ -72,6 +62,32 @@ public class FrmPrincipal extends JFrame {
         jmIngresarProducto.setPreferredSize(new Dimension(200, 40));
 
         jmArchivo.add(jmIngresarProducto);
+
+
+
+        jmiNuevaVenta.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        jmiNuevaVenta.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/nuevaventa.png"))); // NOI18N
+        jmiNuevaVenta.setText("NUEVA VENTA");
+        jmiNuevaVenta.setActionCommand("");
+        jmiNuevaVenta.setAlignmentX(2.0F);
+        jmiNuevaVenta.setAlignmentY(2.0F);
+        jmiNuevaVenta.setMaximumSize(new Dimension(200, 40));
+        jmiNuevaVenta.setMinimumSize(new Dimension(200, 40));
+        jmiNuevaVenta.setPreferredSize(new Dimension(200, 40));
+
+        jmArchivo.add(jmiNuevaVenta);
+
+        jmEditarProducto.setFont(new Font("Roboto", 0, 12)); // NOI18N
+        jmEditarProducto.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/editar.png")));
+        jmEditarProducto.setText("EDITAR PRODUCTO");
+        jmEditarProducto.setAlignmentX(2.0F);
+        jmEditarProducto.setAlignmentY(2.0F);
+        jmEditarProducto.setAutoscrolls(true);
+        jmEditarProducto.setMaximumSize(new Dimension(200, 40));
+        jmEditarProducto.setMinimumSize(new Dimension(200, 40));
+        jmEditarProducto.setPreferredSize(new Dimension(200, 40));
+
+        jmArchivo.add(jmEditarProducto);
 
         jMenuBar1.add(jmArchivo);
 
@@ -129,6 +145,7 @@ public class FrmPrincipal extends JFrame {
 
         jmiNuevaVenta.addActionListener(new EventoMenuNuevoVenta());
         jmIngresarProducto.addActionListener(new EventoCrearNuevoProducto());
+        jmEditarProducto.addActionListener(new EventoEditarProducto());
         jmVerStock.addActionListener(new EventoVerProductos());
         jmiCrearMunicion1.addActionListener(new EventoVerEstadisticaVentas());
         pack();
