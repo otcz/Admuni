@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Admuni.iml" filepath="$PROJECT_DIR$/Admuni.iml" />
+      <module fileurl="file://$PROJECT_DIR$/konecta.iml" filepath="$PROJECT_DIR$/konecta.iml" />
     </modules>
   </component>
 </project>
