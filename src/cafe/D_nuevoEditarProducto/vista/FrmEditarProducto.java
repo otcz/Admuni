@@ -1,9 +1,9 @@
 package cafe.D_nuevoEditarProducto.vista;
 
-import cafe.C_nuevaVenta.modelo.TituloTabla;
+import cafe.D_nuevoEditarProducto.control.EventoBotonActualizar;
+import cafe.D_nuevoEditarProducto.control.EventoBotonBuscarID;
 import cafe.D_nuevoEditarProducto.control.EventoSalir;
 import cafe.D_nuevoEditarProducto.control.EventoTeclaSiguienteComponente;
-import cafe.D_nuevoEditarProducto.modelo.tabla.Jtable;
 
 
 import javax.swing.*;
@@ -15,15 +15,15 @@ import static cafe.A_inicio.vista.FrmInicio.colorPrimary;
 
 public class FrmEditarProducto extends JFrame {
 
-    private JButton btnBuscar,btnGuardar,btnGuardar1,btnSalir;
+    private JButton btnBuscar, btnEditar, btnBorrar, btnSalir;
     private JLabel lbTitulo;
     private JPanel pnprincipal;
-    private JTextField txtCategoria,txtID,txtNombreProducto,txtPeso,txtPrecio,txtReferencia,txtStock;
+    private JTextField txtCategoria, txtID, txtNombreProducto, txtPeso, txtPrecio, txtReferencia, txtStock;
 
     public static FrmEditarProducto editarProducto;
 
     public FrmEditarProducto() {
-        ImageIcon icono =  new ImageIcon(getClass().getResource("/cafe/imagen/ICONO.png"));
+        ImageIcon icono = new ImageIcon(getClass().getResource("/cafe/imagen/ICONO.png"));
         this.setIconImage(icono.getImage());
 
         GridBagConstraints gridBagConstraints;
@@ -31,7 +31,7 @@ public class FrmEditarProducto extends JFrame {
         lbTitulo = new JLabel();
         txtID = new JTextField();
         btnSalir = new JButton();
-        btnGuardar = new JButton();
+        btnEditar = new JButton();
         btnBuscar = new JButton();
         txtReferencia = new JTextField();
         txtPrecio = new JTextField();
@@ -39,7 +39,7 @@ public class FrmEditarProducto extends JFrame {
         txtPeso = new JTextField();
         txtStock = new JTextField();
         txtCategoria = new JTextField();
-        btnGuardar1 = new JButton();
+        btnBorrar = new JButton();
         setBackground(colorPrimary);
 
         pnprincipal.setBackground(colorPrimary);
@@ -88,10 +88,10 @@ public class FrmEditarProducto extends JFrame {
         gridBagConstraints.insets = new Insets(18, 18, 59, 29);
         pnprincipal.add(btnSalir, gridBagConstraints);
 
-        btnGuardar.setBackground(colorPrimary);
-        btnGuardar.setFont(new Font("Roboto", 1, 14));
-        btnGuardar.setForeground(new Color(255, 255, 255));
-        btnGuardar.setText("EDITAR");
+        btnEditar.setBackground(colorPrimary);
+        btnEditar.setFont(new Font("Roboto", 1, 14));
+        btnEditar.setForeground(new Color(255, 255, 255));
+        btnEditar.setText("EDITAR");
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -100,7 +100,7 @@ public class FrmEditarProducto extends JFrame {
         gridBagConstraints.ipady = 19;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(18, 28, 59, 0);
-        pnprincipal.add(btnGuardar, gridBagConstraints);
+        pnprincipal.add(btnEditar, gridBagConstraints);
 
         btnBuscar.setBackground(colorPrimary);
         btnBuscar.setFont(new Font("Roboto", 1, 14));
@@ -120,7 +120,7 @@ public class FrmEditarProducto extends JFrame {
         txtReferencia.setBackground(colorPrimary);
         txtReferencia.setFont(new Font("Roboto", 1, 14));
         txtReferencia.setForeground(new Color(255, 255, 255));
-        txtReferencia.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtReferencia.setBorder(BorderFactory.createTitledBorder(null, "REFERENCIA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -134,7 +134,7 @@ public class FrmEditarProducto extends JFrame {
         txtPrecio.setBackground(colorPrimary);
         txtPrecio.setFont(new Font("Roboto", 1, 14));
         txtPrecio.setForeground(new Color(255, 255, 255));
-        txtPrecio.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtPrecio.setBorder(BorderFactory.createTitledBorder(null, "PRECIO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -149,7 +149,7 @@ public class FrmEditarProducto extends JFrame {
         txtNombreProducto.setBackground(colorPrimary);
         txtNombreProducto.setFont(new Font("Roboto", 1, 14));
         txtNombreProducto.setForeground(new Color(255, 255, 255));
-        txtNombreProducto.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtNombreProducto.setBorder(BorderFactory.createTitledBorder(null, "NOMBRE PRODUCTO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -163,7 +163,7 @@ public class FrmEditarProducto extends JFrame {
         txtPeso.setBackground(colorPrimary);
         txtPeso.setFont(new Font("Roboto", 1, 14));
         txtPeso.setForeground(new Color(255, 255, 255));
-        txtPeso.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtPeso.setBorder(BorderFactory.createTitledBorder(null, "PESO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -178,7 +178,7 @@ public class FrmEditarProducto extends JFrame {
         txtStock.setBackground(colorPrimary);
         txtStock.setFont(new Font("Roboto", 1, 14));
         txtStock.setForeground(new Color(255, 255, 255));
-        txtStock.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtStock.setBorder(BorderFactory.createTitledBorder(null, "STOCK", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -193,7 +193,7 @@ public class FrmEditarProducto extends JFrame {
         txtCategoria.setBackground(colorPrimary);
         txtCategoria.setFont(new Font("Roboto", 1, 14));
         txtCategoria.setForeground(new Color(255, 255, 255));
-        txtCategoria.setBorder(BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
+        txtCategoria.setBorder(BorderFactory.createTitledBorder(null, "CATEGORIA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255)));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -205,10 +205,10 @@ public class FrmEditarProducto extends JFrame {
         gridBagConstraints.insets = new Insets(18, 18, 0, 29);
         pnprincipal.add(txtCategoria, gridBagConstraints);
 
-        btnGuardar1.setBackground(colorPrimary);
-        btnGuardar1.setFont(new Font("Roboto", 1, 14));
-        btnGuardar1.setForeground(new Color(255, 255, 255));
-        btnGuardar1.setText("BORARR");
+        btnBorrar.setBackground(colorPrimary);
+        btnBorrar.setFont(new Font("Roboto", 1, 14));
+        btnBorrar.setForeground(new Color(255, 255, 255));
+        btnBorrar.setText("BORARR");
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -218,16 +218,18 @@ public class FrmEditarProducto extends JFrame {
         gridBagConstraints.ipady = 19;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(18, 24, 59, 0);
-        pnprincipal.add(btnGuardar1, gridBagConstraints);
+        pnprincipal.add(btnBorrar, gridBagConstraints);
         getContentPane().add(pnprincipal, BorderLayout.CENTER);
 
         btnSalir.addActionListener(new EventoSalir());
         btnSalir.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnSalir));
         txtID.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnBuscar));
-
+        btnBuscar.addActionListener(new EventoBotonBuscarID());
+        btnEditar.addActionListener(new EventoBotonActualizar());
 
         pack();
     }
+
 
     public static FrmEditarProducto getInstancia() {
         if (editarProducto == null) {
@@ -238,14 +240,107 @@ public class FrmEditarProducto extends JFrame {
         return editarProducto;
     }
 
-    public static FrmEditarProducto getEditarProducto() {
-        return editarProducto;
+    public JButton getBtnBuscar() {
+        return btnBuscar;
     }
 
-    public static void setEditarProducto(FrmEditarProducto editarProducto) {
-        FrmEditarProducto.editarProducto = editarProducto;
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
     }
 
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
 
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
 
+    public JButton getBtnBorrar() {
+        return btnBorrar;
+    }
+
+    public void setBtnBorrar(JButton btnBorrar) {
+        this.btnBorrar = btnBorrar;
+    }
+
+    public JButton getBtnSalir() {
+        return btnSalir;
+    }
+
+    public void setBtnSalir(JButton btnSalir) {
+        this.btnSalir = btnSalir;
+    }
+
+    public JLabel getLbTitulo() {
+        return lbTitulo;
+    }
+
+    public void setLbTitulo(JLabel lbTitulo) {
+        this.lbTitulo = lbTitulo;
+    }
+
+    public JPanel getPnprincipal() {
+        return pnprincipal;
+    }
+
+    public void setPnprincipal(JPanel pnprincipal) {
+        this.pnprincipal = pnprincipal;
+    }
+
+    public JTextField getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public void setTxtCategoria(JTextField txtCategoria) {
+        this.txtCategoria = txtCategoria;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
+    }
+
+    public JTextField getTxtNombreProducto() {
+        return txtNombreProducto;
+    }
+
+    public void setTxtNombreProducto(JTextField txtNombreProducto) {
+        this.txtNombreProducto = txtNombreProducto;
+    }
+
+    public JTextField getTxtPeso() {
+        return txtPeso;
+    }
+
+    public void setTxtPeso(JTextField txtPeso) {
+        this.txtPeso = txtPeso;
+    }
+
+    public JTextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public void setTxtPrecio(JTextField txtPrecio) {
+        this.txtPrecio = txtPrecio;
+    }
+
+    public JTextField getTxtReferencia() {
+        return txtReferencia;
+    }
+
+    public void setTxtReferencia(JTextField txtReferencia) {
+        this.txtReferencia = txtReferencia;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public void setTxtStock(JTextField txtStock) {
+        this.txtStock = txtStock;
+    }
 }
