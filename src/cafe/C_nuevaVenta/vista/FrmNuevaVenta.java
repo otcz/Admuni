@@ -1,19 +1,15 @@
 package cafe.C_nuevaVenta.vista;
 
 
-import cafe.C_nuevaVenta.controlador.AbrirVentanaPrincipal;
-import cafe.C_nuevaVenta.controlador.EventoBotonNuevaVenta;
-import cafe.C_nuevaVenta.controlador.EventoBotonRegistrar;
-import cafe.C_nuevaVenta.controlador.EventoTeclaSiguienteComponente;
+import cafe.C_nuevaVenta.controlador.*;
 import cafe.C_nuevaVenta.modelo.Jtable;
 import cafe.C_nuevaVenta.modelo.TituloTabla;
+import cafe.D_nuevoEditarProducto.control.AlmacenProductos;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static cafe.A_inicio.vista.FrmInicio.colorPrimary;
 
@@ -43,7 +39,7 @@ public class FrmNuevaVenta extends JFrame {
         pnPropiedades = new JPanel();
         txtID = new JTextField();
         btnNuevoProducto = new JButton();
-        btnPagar= new JButton();
+        btnPagar = new JButton();
         lbTitulo = new JLabel();
         cbProducto = new JComboBox<>();
         jLabel3 = new JLabel();
@@ -124,13 +120,16 @@ public class FrmNuevaVenta extends JFrame {
         cbProducto.setFont(new Font("Roboto", 1, 14)); // NOI18N
         cbProducto.setForeground(new Color(255, 255, 255));
         cbProducto.setMaximumRowCount(5);
-        cbProducto.setModel(new DefaultComboBoxModel<>(new String[]{"LISTADO PRODUCTOS..."}));
         cbProducto.setAlignmentX(1.5F);
         cbProducto.setAlignmentY(1.5F);
         cbProducto.setBorder(BorderFactory.createTitledBorder(null, "", TitledBorder.LEFT, TitledBorder.ABOVE_TOP, new Font("Roboto", 1, 14), new Color(255, 255, 255))); // NOI18N
         cbProducto.setMaximumSize(new Dimension(300, 30));
         cbProducto.setMinimumSize(new Dimension(300, 30));
         cbProducto.setPreferredSize(new Dimension(300, 30));
+
+        for (int i = 0; i < AlmacenProductos.getProductos().size(); i++) {
+            cbProducto.addItem(AlmacenProductos.getProducto(i).getsID()+" - "+AlmacenProductos.getProducto(i).getsNombreProducto());
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -299,15 +298,19 @@ public class FrmNuevaVenta extends JFrame {
         jScrollPane2.setViewportView(jtResgistro);
         pnTabla.add(jScrollPane2);
         getContentPane().add(pnTabla);
+        btnPagar.setEnabled(false);
 
         txtID.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtNombreProducto));
         txtNombreProducto.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtCantidad));
         txtCantidad.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtPrecioUnidad));
         txtPrecioUnidad.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtPrecioTotal));
-        txtPrecioTotal.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtStock        ));
+        txtPrecioTotal.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtStock));
         txtStock.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnRegistrar));
         btnRegistrar.addActionListener(new EventoBotonRegistrar());
         btnNuevoProducto.addActionListener(new EventoBotonNuevaVenta());
+        txtID.addKeyListener(new EventoTeclaConsultarProductoID());
+        cbProducto.addActionListener(new EventoComboBoxConsultarProductoID());
+        txtCantidad.addKeyListener(new EventoTeclaCalculaPrecioTotal());
         addWindowListener(new AbrirVentanaPrincipal());
         pack();
     }
@@ -448,5 +451,37 @@ public class FrmNuevaVenta extends JFrame {
 
     public void setTxtStock(JTextField txtStock) {
         this.txtStock = txtStock;
+    }
+
+    public JTextField getTxtCantidad() {
+        return txtCantidad;
+    }
+
+    public void setTxtCantidad(JTextField txtCantidad) {
+        this.txtCantidad = txtCantidad;
+    }
+
+    public JTextField getTxtPrecioTotal() {
+        return txtPrecioTotal;
+    }
+
+    public void setTxtPrecioTotal(JTextField txtPrecioTotal) {
+        this.txtPrecioTotal = txtPrecioTotal;
+    }
+
+    public JTextField getTxtPrecioUnidad() {
+        return txtPrecioUnidad;
+    }
+
+    public void setTxtPrecioUnidad(JTextField txtPrecioUnidad) {
+        this.txtPrecioUnidad = txtPrecioUnidad;
+    }
+
+    public JButton getBtnPagar() {
+        return btnPagar;
+    }
+
+    public void setBtnPagar(JButton btnPagar) {
+        this.btnPagar = btnPagar;
     }
 }

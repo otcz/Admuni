@@ -9,13 +9,16 @@ public class RecoletarDatosVenta {
         Venta ventas = new Venta();
         FrmNuevaVenta nuevaVenta = FrmNuevaVenta.getInstancia();
         if (nuevaVenta.getTxtID().getText().trim().isEmpty() | nuevaVenta.getTxtNombreProducto().getText().trim().isEmpty() |
-                nuevaVenta.getCbProducto().getSelectedItem().toString().trim().isEmpty() | nuevaVenta.getTxtStock().getText().trim().isEmpty()) {
+                nuevaVenta.getTxtCantidad().getText().trim().isEmpty() | nuevaVenta.getTxtPrecioUnidad().getText().trim().isEmpty() |
+                nuevaVenta.getTxtPrecioTotal().getText().trim().isEmpty()) {
             return null;
         } else {
 
             ventas.setsID(nuevaVenta.getTxtID().getText());
             ventas.setsNombreProducto(nuevaVenta.getTxtNombreProducto().getText());
-            ventas.setsStock(nuevaVenta.getTxtStock().getText());
+            ventas.setsCantidad(nuevaVenta.getTxtCantidad().getText());
+            ventas.setsPrecioUnidad(nuevaVenta.getTxtPrecioUnidad().getText());
+            ventas.setsPrecioTotal(nuevaVenta.getTxtPrecioTotal().getText());
             return ventas;
         }
     }

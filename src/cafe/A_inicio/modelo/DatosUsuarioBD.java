@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DatosUsuarioBD {
 
-    public static String usurio = null, clave = null;
+    private  String usurio = null, clave = null;
 
     ConnectionBD connectionBD = new ConnectionBD();
 
@@ -35,4 +35,28 @@ public class DatosUsuarioBD {
         }
     }
 
+
+    public String getUsurio() {
+        return usurio;
+    }
+
+    public void setUsurio(String usurio) {
+        this.usurio = usurio;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public ConnectionBD getConnectionBD() {
+        return connectionBD;
+    }
+
+    public void setConnectionBD(ConnectionBD connectionBD) {
+        this.connectionBD = connectionBD;
+    }
 }

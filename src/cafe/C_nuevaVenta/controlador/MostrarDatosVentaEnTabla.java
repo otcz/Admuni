@@ -17,7 +17,6 @@ public class MostrarDatosVentaEnTabla {
         FrmNuevaVenta nuevaVenta = FrmNuevaVenta.getInstancia();
         DefaultTableModel model = (DefaultTableModel) nuevaVenta.getJtResgistro().getModel();
         model.addRow(getVenta().venta());
-        nuevaVenta.limpiarCampos();
         PonerRegistrosEnTabla ponerRegistrosEnTabla= new PonerRegistrosEnTabla();
         ponerRegistrosEnTabla.ventas();
     }

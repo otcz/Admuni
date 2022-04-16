@@ -1,5 +1,7 @@
 package cafe.D_nuevoEditarProducto.modelo;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +14,8 @@ public class Producto {
     int sPeso;
     String sCategoria;
     int sStock;
-    Date sFecha;
+    LocalDate sFecha;
+
 
     public ArrayList<Producto> getProductos() {
         return productos;
@@ -78,11 +81,11 @@ public class Producto {
         this.sPeso = sPeso;
     }
 
-    public Date getsFecha() {
+    public LocalDate getsFecha() {
         return sFecha;
     }
 
-    public void setsFecha(Date sFecha) {
+    public void setsFecha(LocalDate sFecha) {
         this.sFecha = sFecha;
     }
 }

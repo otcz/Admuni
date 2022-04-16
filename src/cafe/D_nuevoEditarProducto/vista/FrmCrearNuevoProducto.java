@@ -193,7 +193,7 @@ public class FrmCrearNuevoProducto extends JFrame {
         pnprincipal.add(txtStock, gridBagConstraints);
 
         txtFecha.setBackground(colorPrimary);
-        DateTimeFormatter dFecha = DateTimeFormatter.ofPattern("HH:mm - yyyy/MM/dd ");
+        DateTimeFormatter dFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         txtFecha.setText(dFecha.format(LocalDateTime.now()));
         txtFecha.setEditable(false);
         txtFecha.setFont(new Font("Roboto", 1, 14)); // NOI18N

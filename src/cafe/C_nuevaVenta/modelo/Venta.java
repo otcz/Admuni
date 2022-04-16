@@ -1,19 +1,14 @@
 package cafe.C_nuevaVenta.modelo;
 
 public class Venta {
-    String sID, sNombreProducto, sFecha, sStock;
+    String sID, sNombreProducto, sPrecioUnidad, sPrecioTotal, sCantidad;
 
     public Venta() {
 
     }
     public Object [] venta()
     {
-        return new Object[]{getsID(), getsNombreProducto(), getsFecha(), getsStock()};
-    }
-
-    public Object [] tipoMuni()
-    {
-        return new Object[]{ getsNombreProducto(), getsFecha(), getsStock()};
+        return new Object[]{getsID(), getsNombreProducto(), getsCantidad(), getsPrecioUnidad(),getsPrecioTotal(),};
     }
 
     public String getsID() {
@@ -32,20 +27,27 @@ public class Venta {
         this.sNombreProducto = sNombreProducto;
     }
 
-    public String getsFecha() {
-        return sFecha;
+    public String getsPrecioUnidad() {
+        return sPrecioUnidad;
     }
 
-    public void setsFecha(String sFecha) {
-        this.sFecha = sFecha;
+    public void setsPrecioUnidad(String sPrecioUnidad) {
+        this.sPrecioUnidad = sPrecioUnidad;
     }
 
-    public String getsStock() {
-        return sStock;
+    public String getsPrecioTotal() {
+        return sPrecioTotal;
     }
 
-    public void setsStock(String sStock) {
-        this.sStock = sStock;
+    public void setsPrecioTotal(String sPrecioTotal) {
+        this.sPrecioTotal = sPrecioTotal;
     }
 
+    public String getsCantidad() {
+        return sCantidad;
+    }
+
+    public void setsCantidad(String sCantidad) {
+        this.sCantidad = sCantidad;
+    }
 }

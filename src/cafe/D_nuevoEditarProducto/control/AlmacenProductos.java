@@ -5,17 +5,21 @@ import cafe.D_nuevoEditarProducto.modelo.Producto;
 import java.util.ArrayList;
 
 public class AlmacenProductos {
-    public static ArrayList<Producto> arrayList = new ArrayList();
+    public static ArrayList<Producto> productos = new ArrayList();
 
-    public static boolean addTipoMuni(Producto tipoMuni) {
-        return arrayList.add(tipoMuni);
+    public static boolean addProducto(Producto tipoMuni) {
+        return productos.add(tipoMuni);
     }
 
-    public static ArrayList<Producto> getArrayList() {
-        return arrayList;
+    public static Producto getProducto(int i) {
+        return productos.get(i);
     }
 
-    public static void setArrayList(ArrayList<Producto> arrayList) {
-        AlmacenProductos.arrayList = arrayList;
+    public static ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public static void setProductos(ArrayList<Producto> productos) {
+        AlmacenProductos.productos = productos;
     }
 }
