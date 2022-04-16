@@ -2,6 +2,7 @@ package cafe.C_nuevaVenta.controlador;
 
 import cafe.C_nuevaVenta.modelo.Venta;
 import cafe.C_nuevaVenta.vista.FrmNuevaVenta;
+import cafe.D_nuevoEditarProducto.control.AlmacenProductos;
 import cafe.D_nuevoEditarProducto.modelo.Producto;
 
 import javax.swing.*;
@@ -12,17 +13,24 @@ public class EventoBotonRegistrar implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Venta venta = new RecoletarDatosVenta().recolectar();
-        if (venta != null) {
-            MostrarDatosVentaEnTabla mostrarDatosVentaEnTabla = new MostrarDatosVentaEnTabla(venta);
-            AlmacenarNuevoProducto.addProducto(venta);
-            mostrarDatosVentaEnTabla.addVentaATable();
-            FrmNuevaVenta.getInstancia().getTxtStock().setText(String.valueOf(Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtStock().getText()) - Integer.parseInt(venta.getsCantidad())));
-          //  Producto producto =AlmacenProductos.getProducto(Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText()));
+        Producto producto = AlmacenProductos.getProducto(Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText()));
+        int stock = Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtStock().getText());
+        int cantidad = Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtCantidad().getText());
+        int id=Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText());
+        try {
+            if (venta != null&&stock>=cantidad&&cantidad>0) {
+                MostrarDatosVentaEnTabla mostrarDatosVentaEnTabla = new MostrarDatosVentaEnTabla(venta);
+                AlmacenarNuevoProducto.addProducto(venta);
+                mostrarDatosVentaEnTabla.addVentaATable();
 
+                FrmNuevaVenta.getInstancia().getTxtStock().setText(String.valueOf(stock - cantidad));
+               // producto.setsStock(stock - cantidad);
+                AlmacenProductos.setProducto(id,(stock - cantidad));
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Debes completar toda la información", "GUARDAR MUNICIÓN", JOptionPane.DEFAULT_OPTION,
-                    new ImageIcon(getClass().getResource("/administrarMunicion/imagen/xRoja.png")));
+            }
+        } catch (NumberFormatException n) {
+            JOptionPane.showMessageDialog(null, "Verifica la información de la venta", "GUARDAR MUNICIÓN", JOptionPane.DEFAULT_OPTION,
+                    new ImageIcon(getClass().getResource("/cafe/imagen/xRoja.png")));
         }
     }
 }

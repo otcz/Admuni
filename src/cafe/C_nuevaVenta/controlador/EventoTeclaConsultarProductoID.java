@@ -32,34 +32,33 @@ public class EventoTeclaConsultarProductoID implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
- /*if (e.getKeyCode() == getKeyEventTipo()) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-        thread.start();
-
-        //}*/
         try {
-            for (int i = 0; i < AlmacenProductos.getProductos().size(); i++) {
-                if (Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText()) == AlmacenProductos.getProductos().get(i).getsID()) {
-                    FrmNuevaVenta.getInstancia().getTxtNombreProducto().setText(AlmacenProductos.getProductos().get(i).getsNombreProducto());
-                    FrmNuevaVenta.getInstancia().getTxtPrecioUnidad().setText(String.valueOf(AlmacenProductos.getProductos().get(i).getsPrecio()));
-                    FrmNuevaVenta.getInstancia().getTxtStock().setText(String.valueOf(AlmacenProductos.getProductos().get(i).getsStock()));
-                    i = AlmacenProductos.getProductos().size()-1;
+            if (!FrmNuevaVenta.getInstancia().getTxtID().getText().isEmpty()) {
+                for (int i = 0; i < AlmacenProductos.getProductos().size(); i++) {
+                    if (Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText()) == AlmacenProductos.getProductos().get(i).getsID()) {
+                        FrmNuevaVenta.getInstancia().getTxtNombreProducto().setText(AlmacenProductos.getProductos().get(i).getsNombreProducto());
+                        FrmNuevaVenta.getInstancia().getTxtPrecioUnidad().setText(String.valueOf(AlmacenProductos.getProductos().get(i).getsPrecio()));
+                        FrmNuevaVenta.getInstancia().getTxtStock().setText(String.valueOf(AlmacenProductos.getProductos().get(i).getsStock()));
+                        i = AlmacenProductos.getProductos().size() - 1;
 
-                } else {
-
-                    FrmNuevaVenta.getInstancia().getTxtNombreProducto().setText("");
-                    FrmNuevaVenta.getInstancia().getTxtPrecioUnidad().setText("");
-                    FrmNuevaVenta.getInstancia().getTxtStock().setText("");
+                    } else {
+                        limpiarCampos();
+                    }
                 }
+            } else {
+                limpiarCampos();
             }
+
         } catch (NumberFormatException i) {
 
         }
+    }
+
+    public void limpiarCampos() {
+        FrmNuevaVenta.getInstancia().getTxtNombreProducto().setText("");
+        FrmNuevaVenta.getInstancia().getTxtPrecioUnidad().setText("");
+        FrmNuevaVenta.getInstancia().getTxtPrecioTotal().setText("");
+        FrmNuevaVenta.getInstancia().getTxtStock().setText("");
     }
 
     public int getKeyEventTipo() {

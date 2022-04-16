@@ -1,7 +1,7 @@
 package cafe.A_inicio.modelo;
 
 import cafe.A_inicio.control.IniciarAlmacenProductos;
-import cafe.BD.ConnectionBD;
+import cafe.A_BD.ConnectionBD;
 import cafe.B_menuPrincipal.vista.FrmPrincipal;
 import cafe.A_inicio.vista.FrmInicio;
 

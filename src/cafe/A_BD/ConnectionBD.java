@@ -1,4 +1,4 @@
-package cafe.BD;
+package cafe.A_BD;
 
 import javax.swing.*;
 import java.sql.Connection;

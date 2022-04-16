@@ -128,7 +128,7 @@ public class FrmNuevaVenta extends JFrame {
         cbProducto.setPreferredSize(new Dimension(300, 30));
 
         for (int i = 0; i < AlmacenProductos.getProductos().size(); i++) {
-            cbProducto.addItem(AlmacenProductos.getProducto(i).getsID()+" - "+AlmacenProductos.getProducto(i).getsNombreProducto());
+            cbProducto.addItem(AlmacenProductos.getProductos().get(i).getsID()+" - "+AlmacenProductos.getProductos().get(i).getsNombreProducto());
         }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -298,7 +298,10 @@ public class FrmNuevaVenta extends JFrame {
         jScrollPane2.setViewportView(jtResgistro);
         pnTabla.add(jScrollPane2);
         getContentPane().add(pnTabla);
-        btnPagar.setEnabled(false);
+        txtNombreProducto.setEditable(false);
+        txtPrecioTotal.setEditable(false);
+        txtPrecioUnidad.setEditable(false);
+        txtStock.setEditable(false);
 
         txtID.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtNombreProducto));
         txtNombreProducto.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtCantidad));
@@ -306,10 +309,11 @@ public class FrmNuevaVenta extends JFrame {
         txtPrecioUnidad.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtPrecioTotal));
         txtPrecioTotal.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtStock));
         txtStock.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnRegistrar));
+
+
         btnRegistrar.addActionListener(new EventoBotonRegistrar());
         btnNuevoProducto.addActionListener(new EventoBotonNuevaVenta());
         txtID.addKeyListener(new EventoTeclaConsultarProductoID());
-        cbProducto.addActionListener(new EventoComboBoxConsultarProductoID());
         txtCantidad.addKeyListener(new EventoTeclaCalculaPrecioTotal());
         addWindowListener(new AbrirVentanaPrincipal());
         pack();

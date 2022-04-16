@@ -7,12 +7,26 @@ import java.util.ArrayList;
 public class AlmacenProductos {
     public static ArrayList<Producto> productos = new ArrayList();
 
-    public static boolean addProducto(Producto tipoMuni) {
-        return productos.add(tipoMuni);
+    public static boolean addProducto(Producto producto) {
+        return productos.add(producto);
+    }
+
+    public static void setProducto(int idProdcuto, int stock) {
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getsID() == idProdcuto) {
+                productos.get(i).setsStock(stock);
+            }
+        }
     }
 
     public static Producto getProducto(int i) {
-        return productos.get(i);
+        for (int i1 = 0; i1 < productos.size(); i1++) {
+            if (productos.get(i1).getsID() == i) {
+                return productos.get(i1);
+            }
+        }
+        return null;
+
     }
 
     public static ArrayList<Producto> getProductos() {

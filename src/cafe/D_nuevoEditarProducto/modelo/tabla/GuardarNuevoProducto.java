@@ -1,6 +1,6 @@
 package cafe.D_nuevoEditarProducto.modelo.tabla;
 
-import cafe.BD.ConnectionBD;
+import cafe.A_BD.ConnectionBD;
 import cafe.D_nuevoEditarProducto.modelo.Producto;
 import cafe.D_nuevoEditarProducto.vista.FrmCrearNuevoProducto;
 

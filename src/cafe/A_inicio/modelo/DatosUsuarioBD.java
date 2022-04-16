@@ -1,6 +1,6 @@
 package cafe.A_inicio.modelo;
 
-import cafe.BD.ConnectionBD;
+import cafe.A_BD.ConnectionBD;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

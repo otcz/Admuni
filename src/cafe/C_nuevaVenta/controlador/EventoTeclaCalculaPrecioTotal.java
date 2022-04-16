@@ -28,9 +28,8 @@ public class EventoTeclaCalculaPrecioTotal implements KeyListener {
                 int stock = Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtStock().getText());
 
                 if (cantidad > stock) {
-                    FrmNuevaVenta.getInstancia().getBtnRegistrar().setEnabled(false);
+
                 } else {
-                    FrmNuevaVenta.getInstancia().getBtnRegistrar().setEnabled(true);
                     FrmNuevaVenta.getInstancia().getTxtPrecioTotal().setText(String.valueOf((cantidad * precioUnidad)));
                 }
 
