@@ -128,7 +128,7 @@ public class FrmNuevaVenta extends JFrame {
         cbProducto.setPreferredSize(new Dimension(300, 30));
 
         for (int i = 0; i < AlmacenProductos.getProductos().size(); i++) {
-            cbProducto.addItem(AlmacenProductos.getProductos().get(i).getsID()+" - "+AlmacenProductos.getProductos().get(i).getsNombreProducto());
+            cbProducto.addItem(AlmacenProductos.getProductos().get(i).getsID() + " - " + AlmacenProductos.getProductos().get(i).getsNombreProducto());
         }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -310,7 +310,7 @@ public class FrmNuevaVenta extends JFrame {
         txtPrecioTotal.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, txtStock));
         txtStock.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnRegistrar));
 
-
+        btnPagar.addActionListener(new EventoBotonPagar());
         btnRegistrar.addActionListener(new EventoBotonRegistrar());
         btnNuevoProducto.addActionListener(new EventoBotonNuevaVenta());
         txtID.addKeyListener(new EventoTeclaConsultarProductoID());

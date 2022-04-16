@@ -19,9 +19,9 @@ public class AlmacenProductos {
         }
     }
 
-    public static Producto getProducto(int i) {
+    public static Producto getProducto(int idProducto) {
         for (int i1 = 0; i1 < productos.size(); i1++) {
-            if (productos.get(i1).getsID() == i) {
+            if (productos.get(i1).getsID() == idProducto) {
                 return productos.get(i1);
             }
         }

@@ -2,8 +2,8 @@
 package cafe.E_verProductos.vista;
 
 
-import cafe.C_nuevaVenta.controlador.AlmacenarNuevoProducto;
-import cafe.C_nuevaVenta.modelo.Venta;
+import cafe.C_nuevaVenta.controlador.AlmacenarVenta;
+import cafe.C_nuevaVenta.modelo.Ventas;
 import cafe.E_verProductos.modelo.Jtable;
 import cafe.E_verProductos.modelo.TituloTabla;
 
@@ -101,14 +101,14 @@ public class FrmVerProductos extends JFrame {
 
         getContentPane().add(pnPrincipal);
 
-        ArrayList<Venta> municions = AlmacenarNuevoProducto.getArrayList();
+        ArrayList<Ventas> municions = AlmacenarVenta.getVentas();
         DefaultTableModel defaultTableModel = (DefaultTableModel) getJtRegistros().getModel();
         for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
             defaultTableModel.removeRow(i);
         }
 
         for (int i = 0; i < municions.size(); i++) {
-            Venta municion = municions.get(i);
+            Ventas municion = municions.get(i);
             defaultTableModel.addRow(municion.venta());
         }
 

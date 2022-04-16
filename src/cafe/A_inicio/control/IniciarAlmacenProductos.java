@@ -34,7 +34,7 @@ public class IniciarAlmacenProductos {
             rs.close();
             stmt.close();
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
 
     }

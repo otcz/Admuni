@@ -1,14 +1,16 @@
 package cafe.C_nuevaVenta.modelo;
 
-public class Venta {
+import java.util.ArrayList;
+
+public class Ventas {
     String sID, sNombreProducto, sPrecioUnidad, sPrecioTotal, sCantidad;
+    ArrayList Ventas = new ArrayList();
 
-    public Venta() {
 
-    }
-    public Object [] venta()
-    {
-        return new Object[]{getsID(), getsNombreProducto(), getsCantidad(), getsPrecioUnidad(),getsPrecioTotal(),};
+    public Object[] venta() {
+        Object[] object = new Object[]{getsID(), getsNombreProducto(), getsCantidad(), getsPrecioUnidad(), getsPrecioTotal(),};
+        Ventas.add(object);
+        return object;
     }
 
     public String getsID() {

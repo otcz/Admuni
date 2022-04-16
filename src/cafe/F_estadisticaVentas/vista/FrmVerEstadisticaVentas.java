@@ -6,8 +6,8 @@
 package cafe.F_estadisticaVentas.vista;
 
 
-import cafe.C_nuevaVenta.controlador.AlmacenarNuevoProducto;
-import cafe.C_nuevaVenta.modelo.Venta;
+import cafe.C_nuevaVenta.controlador.AlmacenarVenta;
+import cafe.C_nuevaVenta.modelo.Ventas;
 import cafe.E_verProductos.modelo.TituloTabla;
 import cafe.F_estadisticaVentas.modelo.Jtable;
 import org.jfree.chart.ChartFactory;
@@ -69,8 +69,8 @@ public class FrmVerEstadisticaVentas extends JFrame {
 
         pack();
         DefaultPieDataset defaultpiedataset = new DefaultPieDataset();
-        for (int i = 0; i < AlmacenarNuevoProducto.getArrayList().size(); i++) {
-            Venta ventas = AlmacenarNuevoProducto.getArrayList().get(i);
+        for (int i = 0; i < AlmacenarVenta.getVentas().size(); i++) {
+            Ventas ventas = AlmacenarVenta.getVentas().get(i);
             defaultpiedataset.setValue(ventas.getsID(), Double.parseDouble(ventas.getsNombreProducto()));
             DefaultTableModel model = (DefaultTableModel) jtRegistros.getModel();
             model.addRow(ventas.venta());

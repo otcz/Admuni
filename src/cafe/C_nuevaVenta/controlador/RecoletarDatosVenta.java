@@ -1,17 +1,13 @@
 package cafe.C_nuevaVenta.controlador;
 
-import cafe.C_nuevaVenta.modelo.Venta;
+import cafe.C_nuevaVenta.modelo.Ventas;
 import cafe.C_nuevaVenta.vista.FrmNuevaVenta;
-import cafe.D_nuevoEditarProducto.control.AlmacenProductos;
-
-import javax.swing.*;
-import java.io.IOException;
 
 public class RecoletarDatosVenta {
 
-    public Venta recolectar() throws NumberFormatException {
+    public Ventas recolectar() throws NumberFormatException {
 
-        Venta ventas = new Venta();
+        Ventas ventas = new Ventas();
         FrmNuevaVenta nuevaVenta = FrmNuevaVenta.getInstancia();
         if (nuevaVenta.getTxtID().getText().trim().isEmpty() | nuevaVenta.getTxtNombreProducto().getText().trim().isEmpty() |
                 nuevaVenta.getTxtCantidad().getText().trim().isEmpty() | nuevaVenta.getTxtPrecioUnidad().getText().trim().isEmpty() |

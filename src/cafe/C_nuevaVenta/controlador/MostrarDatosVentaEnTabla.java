@@ -1,15 +1,15 @@
 package cafe.C_nuevaVenta.controlador;
 
-import cafe.C_nuevaVenta.modelo.Venta;
+import cafe.C_nuevaVenta.modelo.Ventas;
 import cafe.C_nuevaVenta.vista.FrmNuevaVenta;
 import cafe.E_verProductos.control.PonerRegistrosEnTabla;
 
 import javax.swing.table.DefaultTableModel;
 
 public class MostrarDatosVentaEnTabla {
-    Venta venta;
+    Ventas venta;
 
-    public MostrarDatosVentaEnTabla(Venta venta) {
+    public MostrarDatosVentaEnTabla(Ventas venta) {
         this.venta = venta;
     }
 
@@ -21,11 +21,11 @@ public class MostrarDatosVentaEnTabla {
         ponerRegistrosEnTabla.ventas();
     }
 
-    public Venta getVenta() {
+    public Ventas getVenta() {
         return venta;
     }
 
-    public void setVenta(Venta venta) {
+    public void setVenta(Ventas venta) {
         this.venta = venta;
     }
 }
