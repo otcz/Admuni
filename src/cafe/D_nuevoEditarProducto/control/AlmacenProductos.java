@@ -29,6 +29,16 @@ public class AlmacenProductos {
 
     }
 
+    public static Producto remover(int idProducto) {
+        for (int i1 = 0; i1 < productos.size(); i1++) {
+            if (productos.get(i1).getsID() == idProducto) {
+                return productos.remove(i1);
+            }
+        }
+        return null;
+
+    }
+
     public static ArrayList<Producto> getProductos() {
         return productos;
     }

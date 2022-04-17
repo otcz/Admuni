@@ -1,9 +1,6 @@
 package cafe.D_nuevoEditarProducto.vista;
 
-import cafe.D_nuevoEditarProducto.control.EventoBotonActualizar;
-import cafe.D_nuevoEditarProducto.control.EventoBotonBuscarID;
-import cafe.D_nuevoEditarProducto.control.EventoSalir;
-import cafe.D_nuevoEditarProducto.control.EventoTeclaSiguienteComponente;
+import cafe.D_nuevoEditarProducto.control.*;
 
 
 import javax.swing.*;
@@ -106,6 +103,7 @@ public class FrmEditarProducto extends JFrame {
         btnBuscar.setFont(new Font("Roboto", 1, 14));
         btnBuscar.setForeground(new Color(255, 255, 255));
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setIcon(new ImageIcon(getClass().getResource("/cafe/imagen/VerRegistro.png")));
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -226,6 +224,8 @@ public class FrmEditarProducto extends JFrame {
         txtID.addKeyListener(new EventoTeclaSiguienteComponente(KeyEvent.VK_ENTER, btnBuscar));
         btnBuscar.addActionListener(new EventoBotonBuscarID());
         btnEditar.addActionListener(new EventoBotonActualizar());
+        btnBorrar.addActionListener(new EventoBotonEliminarProdcuto());
+        btnSalir.addActionListener(new EventoSalir());
 
         pack();
     }

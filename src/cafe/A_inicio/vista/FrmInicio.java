@@ -6,10 +6,8 @@
 package cafe.A_inicio.vista;
 
 
-import cafe.A_inicio.control.EventoBotonEntrarValidarUsuario;
-import cafe.A_inicio.control.EventoClicSalir;
-import cafe.A_inicio.control.EventoTeclaSiguienteComponente;
-import cafe.A_inicio.control.EventoTeclaValidarUsuario;
+import cafe.A_BD.ConnectionBD;
+import cafe.A_inicio.control.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -152,6 +150,8 @@ public class FrmInicio extends JFrame {
             public void run() {
                 FrmInicio inicio = getInstancia();
                 inicio.setVisible(true);
+
+
             }
         });
     }

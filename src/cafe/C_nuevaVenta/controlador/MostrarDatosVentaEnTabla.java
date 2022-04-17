@@ -2,7 +2,6 @@ package cafe.C_nuevaVenta.controlador;
 
 import cafe.C_nuevaVenta.modelo.Ventas;
 import cafe.C_nuevaVenta.vista.FrmNuevaVenta;
-import cafe.E_verProductos.control.PonerRegistrosEnTabla;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -16,9 +15,8 @@ public class MostrarDatosVentaEnTabla {
     public void addVentaATable() {
         FrmNuevaVenta nuevaVenta = FrmNuevaVenta.getInstancia();
         DefaultTableModel model = (DefaultTableModel) nuevaVenta.getJtResgistro().getModel();
-        model.addRow(getVenta().venta());
-        PonerRegistrosEnTabla ponerRegistrosEnTabla= new PonerRegistrosEnTabla();
-        ponerRegistrosEnTabla.ventas();
+        model.addRow(getVenta().objetoVentaParaTabla());
+
     }
 
     public Ventas getVenta() {

@@ -1,6 +1,8 @@
 package cafe.D_nuevoEditarProducto.modelo.tabla;
 
 import cafe.A_BD.ConnectionBD;
+import cafe.C_nuevaVenta.controlador.AlmacenarVenta;
+import cafe.D_nuevoEditarProducto.control.AlmacenProductos;
 import cafe.D_nuevoEditarProducto.modelo.Producto;
 import cafe.D_nuevoEditarProducto.vista.FrmCrearNuevoProducto;
 
@@ -26,11 +28,13 @@ public class GuardarNuevoProducto {
                 producto.setsStock(Integer.parseInt(FrmCrearNuevoProducto.crearNuevoProducto.getTxtStock().getText()));
                 producto.setsFecha(todayLocalDate);
                 guardarNuevoProductoBD();
+                AlmacenProductos.addProducto(producto);
+
                 JOptionPane.showMessageDialog(null, "Registro exitoso!", "GUARDAR TIPO MUNICIÓN", JOptionPane.DEFAULT_OPTION,
                         new ImageIcon(getClass().getResource("/cafe/imagen/Guardar.png")));
                 limpiarDeProducto();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Servidor dice: "+e, "GUARDAR PRODUCTO", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.showMessageDialog(null, "Servidor dice: " + e, "GUARDAR PRODUCTO", JOptionPane.DEFAULT_OPTION,
                         new ImageIcon(getClass().getResource("/cafe/imagen/xRoja.png")));
 
             } catch (NumberFormatException e) {

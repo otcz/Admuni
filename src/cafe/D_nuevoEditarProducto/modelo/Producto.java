@@ -15,6 +15,7 @@ public class Producto {
     String sCategoria;
     int sStock;
     LocalDate sFecha;
+    Object[] propiedades;
 
 
     public ArrayList<Producto> getProductos() {
@@ -88,4 +89,10 @@ public class Producto {
     public void setsFecha(LocalDate sFecha) {
         this.sFecha = sFecha;
     }
+
+    public Object[] getPropiedades() {
+        this.propiedades = new Object[]{getsFecha(),getsID(), getsNombreProducto(), getsReferencia(), getsPrecio(), getsPeso(),getsCategoria(),getsStock()};
+        return propiedades;
+    }
+
 }

@@ -312,7 +312,7 @@ public class FrmNuevaVenta extends JFrame {
 
         btnPagar.addActionListener(new EventoBotonPagar());
         btnRegistrar.addActionListener(new EventoBotonRegistrar());
-        btnNuevoProducto.addActionListener(new EventoBotonNuevaVenta());
+        btnNuevoProducto.addActionListener(new EventoBotonAbrirNuevaVenta());
         txtID.addKeyListener(new EventoTeclaConsultarProductoID());
         txtCantidad.addKeyListener(new EventoTeclaCalculaPrecioTotal());
         addWindowListener(new AbrirVentanaPrincipal());

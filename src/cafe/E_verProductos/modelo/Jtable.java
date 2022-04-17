@@ -22,8 +22,8 @@ public class Jtable extends JTable {
         getTableHeader().setReorderingAllowed(false);
         setRowHeight(40);
         setGridColor(new Color(1, 1, 1));
-        setBackground(colorPrimary);
-        setSelectionBackground(new Color(1, 135, 134));
+        setBackground(new Color(255, 255, 255));
+        setSelectionBackground(colorPrimary);
         JTableHeader jtableHeader = getTableHeader();
         jtableHeader.setDefaultRenderer(new EncabezadoTabla());
         setTableHeader(jtableHeader);

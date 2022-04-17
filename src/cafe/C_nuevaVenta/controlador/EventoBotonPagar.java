@@ -10,11 +10,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class EventoBotonPagar implements ActionListener {
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -23,16 +22,15 @@ public class EventoBotonPagar implements ActionListener {
         int valorPgar = 0;
         int cantidadVentas = 0;
 
-        AlmacenarVenta almacenarVenta = new AlmacenarVenta();
-        for (int i = 0; i < almacenarVenta.getVentas().size(); i++) {
-            Ventas ventas = almacenarVenta.getVentas().get(i);
-            int pago = Integer.parseInt(ventas.getsPrecioTotal());
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Ventas ventas = AlmacenarVenta.getVentas(Integer.parseInt(modelo.getValueAt(i,0).toString()));
+            int pago = ventas.getsPrecioTotal();
             valorPgar = valorPgar + pago;
             cantidadVentas++;
-
-            update(Integer.parseInt(ventas.getsID()));
+            update((ventas.getsIDProdcuto()));
+            guardarNuevoProductoBD(ventas);
         }
-
 
         JOptionPane.showMessageDialog(null, "Cantidad de productos-->" + cantidadVentas + "\n" +
                         "Valor a Pagar--> " + valorPgar, "GUARDAR MUNICIÓN", JOptionPane.INFORMATION_MESSAGE,
@@ -46,14 +44,45 @@ public class EventoBotonPagar implements ActionListener {
     }
 
     public void update(int id) {
-
         try {
-          Producto producto=AlmacenProductos.getProducto(id);
+            FrmNuevaVenta nuevaVenta = FrmNuevaVenta.getInstancia();
+            Producto producto = AlmacenProductos.getProducto(id);
             Connection connection = new ConnectionBD().connection();
-            Statement st = null;
-            st = connection.createStatement();
-            String query = "UPDATE producto SET  stock= '"+ producto.getsStock() +"'  where id = '"+ id +"'";
-            st.executeUpdate(query);
+            Statement statement = connection.createStatement();
+            String query = "UPDATE producto SET  stock= '" + producto.getsStock() + "'  where id = '" + id + "'";
+            int n = statement.executeUpdate(query);
+            if (n > 0) {
+                nuevaVenta.getTxtNombreProducto().setText("");
+                nuevaVenta.getTxtStock().setText("");
+                nuevaVenta.getTxtCantidad().setText("");
+                nuevaVenta.getTxtPrecioTotal().setText("");
+                nuevaVenta.getTxtPrecioUnidad().setText("");
+                nuevaVenta.getTxtID().setText("");
+
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void guardarNuevoProductoBD(Ventas ventas) {
+        try {
+            ConnectionBD connection = new ConnectionBD();
+            String INSERT_ = "INSERT INTO ventas (id_venta, id, cantidad, fecha) value (?, ?, ?, ?)";
+            Connection conn = connection.connection();
+            PreparedStatement statement = conn.prepareStatement(INSERT_);
+            statement.setInt(1, ventas.getsIDVenta());
+            statement.setInt(2, ventas.getsIDProdcuto());
+            statement.setInt(3, ventas.getsCantidad());
+            statement.setDate(4, Date.valueOf(ventas.getFecha().toString()));
+            System.out.println(ventas.getsCantidad());
+            int iRespuestaSQL =  statement.executeUpdate();
+            if (iRespuestaSQL > 0) {
+
+            }
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

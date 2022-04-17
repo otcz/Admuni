@@ -14,18 +14,14 @@ public class EventoBotonRegistrar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
         Ventas venta = new RecoletarDatosVenta().recolectar();
-        Producto producto = AlmacenProductos.getProducto(Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText()));
         int stock = Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtStock().getText());
         int cantidad = Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtCantidad().getText());
         int id=Integer.parseInt(FrmNuevaVenta.getInstancia().getTxtID().getText());
-
             if (venta != null&&stock>=cantidad&&cantidad>0) {
-                MostrarDatosVentaEnTabla mostrarDatosVentaEnTabla = new MostrarDatosVentaEnTabla(venta);
                 AlmacenarVenta.addVenta(venta);
+                MostrarDatosVentaEnTabla mostrarDatosVentaEnTabla = new MostrarDatosVentaEnTabla(venta);
                 mostrarDatosVentaEnTabla.addVentaATable();
-
                 FrmNuevaVenta.getInstancia().getTxtStock().setText(String.valueOf(stock - cantidad));
-               // producto.setsStock(stock - cantidad);
                 AlmacenProductos.setProducto(id,(stock - cantidad));
 
             }
